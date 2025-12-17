@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Reveal Smoke</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Fredoka:wdth,wght@99,300..700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" href="gender.png" type="image/png">
+
+    <style>
+    /* ===== Body and Background ===== */
+    body {
+        background-image: url(backgroundballoon.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;  /* space from top */
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        z-index: 10;
+    }
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        font-family: "Fredoka", sans-serif;
+    }
+
+    .navbar a {
+        color: black;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .navbar a:hover {
+        color: white;
+    }
+
+    .navbar img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* ===== Heading ===== */
+    h1 {
+        color: rgb(91, 249, 175);
+        text-shadow: 5px 5px 10px rgba(66, 65, 78, 0.8);
+        margin-bottom: 40px;
+        font-size: 48px;
+        text-align: center;
+         font-family: "Fredoka", sans-serif;
+
+    }
+
+    /* ===== Confetti ===== */
+    .confetti-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 9999;
+    }
+
+    .confetti {
+        position: absolute;
+        top: -10px;
+        opacity: 0.9;
+        animation: fall linear infinite;
+    }
+
+    /* Individual confetti styles */
+    .confetti:nth-child(1) { left: 5%; width: 10px; height: 6px; background: pink; border-radius: 50%; animation-duration: 4s; animation-delay: 0s; }
+    .confetti:nth-child(2) { left: 15%; width: 8px; height: 8px; background: skyblue; border-radius: 0%; animation-duration: 5s; animation-delay: 0.5s; }
+    .confetti:nth-child(3) { left: 25%; width: 12px; height: 6px; background: gold; border-radius: 25%; animation-duration: 3.5s; animation-delay: 1s; }
+    .confetti:nth-child(4) { left: 35%; width: 8px; height: 10px; background: purple; border-radius: 50%; animation-duration: 4.2s; animation-delay: 1.2s; }
+    .confetti:nth-child(5) { left: 45%; width: 10px; height: 10px; background: lightgreen; border-radius: 0%; animation-duration: 4.8s; animation-delay: 0.8s; }
+    .confetti:nth-child(6) { left: 55%; width: 6px; height: 8px; background: orange; border-radius: 25%; animation-duration: 3.7s; animation-delay: 1.5s; }
+    .confetti:nth-child(7) { left: 65%; width: 8px; height: 8px; background: cyan; border-radius: 50%; animation-duration: 5.2s; animation-delay: 1.8s; }
+    .confetti:nth-child(8) { left: 75%; width: 10px; height: 6px; background: magenta; border-radius: 50%; animation-duration: 4.5s; animation-delay: 2s; }
+    .confetti:nth-child(9) { left: 85%; width: 6px; height: 6px; background: lime; border-radius: 0%; animation-duration: 4s; animation-delay: 2.3s; }
+    .confetti:nth-child(10){ left: 95%; width: 8px; height: 10px; background: red; border-radius: 25%; animation-duration: 5s; animation-delay: 2.5s; }
+
+    /* Fall animation with rotation and horizontal sway */
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
+        25% { transform: translateY(25vh) rotate(90deg) translateX(10px); }
+        50% { transform: translateY(50vh) rotate(180deg) translateX(-10px); }
+        75% { transform: translateY(75vh) rotate(270deg) translateX(5px); }
+        100% { transform: translateY(100vh) rotate(360deg) translateX(0); opacity: 0; }
+    }
+
+    /* ===== Carousel Container ===== */
+    .carousel-container {
+        border: 5px solid white;
+        border-radius: 25px;
+        padding: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        background-color: rgba(255,255,255,0.1);
+        max-width: 95%;
+        margin-bottom: 50px;
+    }
+
+    /* ===== Carousel ===== */
+    .carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .slide {
+        flex: 0 0 80%;
+        height: 500px;
+        border-radius: 20px;
+        scroll-snap-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slide video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 3px solid white;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .circle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;          /* Circle width */
+    height: 100px;         /* Circle height */
+    background-color: skyblue;  /* Button color */
+    color: #181616;       /* Text color */
+    text-decoration: none;
+    border-radius: 50%;   /* Makes it circular */
+    font-size: 24px;      /* Arrow size */
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+   
+}
+
+.circle-btn:hover {
+    background-color: pink; /* Darker on hover */
+    transform: scale(1.1);     /* Slight grow effect */
+    
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Confetti -->
+    <div class="confetti-container">
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+        <span class="confetti"></span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html"><img src="gender.png" class="logo"></a>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </nav>
+
+    <!-- Heading -->
+    <h1>GENDER REVEAL CONFETTI</h1>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="slide">
+                <video controls>
+                    <source src="balloon1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="slide">
+                <video controls>
+                    <source src="balloon2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="slide">
+                <video controls>
+                    <source src="balloon3.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+<a href="2ndpage.html" class="circle-btn">back</a><br>
+
+</body>
+</html>

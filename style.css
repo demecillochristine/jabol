@@ -1,0 +1,226 @@
+
+@font-face {
+  font-family: "Pacifico-Regular";
+  src: url(Pacifico-Regular.ttf);
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url(Fredoka-VariableFont_wdth,wght.ttf);
+}
+@font-face {
+  font-family: "CedarvilleCursive";
+  src: url(CedarvilleCursive-Regular.ttf);
+}
+
+/*Background*/
+body{
+  background-image: url(background1stpage.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-color: white;
+}
+
+ html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+/*navigation*/
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: light;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  font-weight: light;
+  font-size: 16px;
+}
+
+.navbar img {
+  width: 80px;
+  height:80px;
+}
+
+a:hover{
+  color: rgb(255, 255, 255);
+}
+
+/*text area yipee*/
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-style: normal;
+}
+
+.cedarville-cursive-regular {
+  font-family: "CedarvilleCursive", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.websitetitle{
+  position: relative;
+  top: 70px;
+  font-family: "fredoka", cursive;
+  text-align: center;
+  display: block;
+  font-weight: lighter;
+  font-style: bold;
+  left: -2%;
+  font-size: 25px;
+  
+  color: rgb(154, 48, 143);
+}
+
+.maintext1{ 
+  user-select: none; 
+  font-family: "Pacifico", cursive; 
+  font-weight: normal; color: rgb(0, 0, 0); 
+  text-align: center; 
+  display: block; 
+  font-size: 40px; 
+  position: relative;
+  z-index: 6;
+} 
+.pink{ 
+  color: rgb(245, 142, 204); 
+} 
+.blue{ 
+  color: rgb(150, 179, 245); 
+} 
+.text1{ 
+  font-family: "Fredoka"; 
+  font-weight: bold; 
+  color: rgb(99, 16, 99);
+}
+
+.subtext1{
+  font-family: "Fredoka", sans-serif;
+  text-align: center;
+  font-weight: light;
+  position: relative;
+  top: -40px;
+  background-color: rgba(245, 128, 247, 0.616);
+  padding: 5px 5px;
+  border-radius: 50px;
+}
+
+h4{
+  color: black;
+  font-weight: lighter;
+
+}
+
+/*button*/
+
+.Buttoncase {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  bottom: 20px;
+  overflow: visible;
+  transform: translateX(34%)
+}
+
+.button1{
+  padding: 18px 40px;
+  font-family: "Fredoka", sans-serif;
+  width: 80px;
+  height: 40px;
+  background-color: rgb(187, 84, 255);
+  text-align: center;
+  border-radius: 30px;
+  display: flex;
+  z-index: 6;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform-origin: center;
+  overflow: visible;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;            /* larger text */
+  font-weight: bold;
+}
+.button1:hover{
+
+  border-radius: 15px;
+  transform: scale(1.2);
+  background-color: rgb(236, 44, 153);
+}
+.button1:active{
+  transform: scale(1.1);
+  background-color: rgb(176, 25, 110);
+
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background-color: red;
+  top: -20px;
+  animation: fall linear infinite;
+}
+
+.confetti:nth-child(1) { left: 10%; animation-duration: 3s; background: pink; }
+.confetti:nth-child(2) { left: 20%; animation-duration: 4s; background: blue; }
+.confetti:nth-child(3) { left: 30%; animation-duration: 2.5s; background: yellow; }
+.confetti:nth-child(4) { left: 40%; animation-duration: 3.5s; background: green; }
+.confetti:nth-child(5) { left: 50%; animation-duration: 2.8s; background: purple; }
+.confetti:nth-child(6) { left: 60%; animation-duration: 3.2s; background: orange; }
+.confetti:nth-child(7) { left: 70%; animation-duration: 4.5s; background: cyan; }
+.confetti:nth-child(8) { left: 80%; animation-duration: 3.7s; background: magenta; }
+.confetti:nth-child(9) { left: 90%; animation-duration: 2.9s; background: lime; }
+.confetti:nth-child(10){ left: 95%; animation-duration: 4s; background: red; }
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+body {
+    padding-top: 100px; /* increases space at the top */
+    text-align: center;  /* optional: centers text horizontally */
+}
